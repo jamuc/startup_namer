@@ -10,6 +10,7 @@ class StartupNamer extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Startup Namer",
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Startup Namer"),
