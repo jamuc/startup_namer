@@ -8,15 +8,31 @@ main(List<String> args) {
 class StartupNamer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final words = WordPair.random();
     return MaterialApp(
       title: "Startup Namer",
       home: Scaffold(
         appBar: AppBar(
           title: Text("Startup Namer"),
         ),
-        body: Center(child: Text(words.asPascalCase),),
+        body: RandomWord(),
       ),
     );
   }
+}
+
+class RandomWordState extends State<RandomWord> {
+  @override
+  Widget build(BuildContext context) {
+    final _pair = WordPair.random();
+    return Center(child: Text(_pair.asPascalCase));
+  }
+
+}
+
+class RandomWord extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new RandomWordState();
+  }
+
 }
