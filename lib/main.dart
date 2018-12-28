@@ -23,13 +23,29 @@ class StartupNamer extends StatelessWidget {
 
 class RandomWordState extends State<RandomWord> {
   final _suggestions = <WordPair>[];
+  final _savedPairs = new Set<WordPair>();
 
   Widget _buildRow(WordPair pair) {
+    final _alreadySaved = _savedPairs.contains(pair);
+
     return ListTile(
       title: Text(
         pair.asPascalCase,
         style: TextStyle(fontSize: 18.0),
       ),
+      trailing: new Icon(
+        _alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: _alreadySaved ? Colors.red : null,
+      ),
+      onTap: () {
+        setState(() {
+          if(_alreadySaved) {
+            _savedPairs.remove(pair);
+          } else {
+            _savedPairs.add(pair);
+          }
+                });
+      }
     );
   }
 
